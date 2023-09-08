@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { readFile, writeFile } from '../helpers/file-helpers';
-
-const DATABASE_PATH = '/src/database.json';
+import Blur from './components/Blur';
+import HitCounter from './components/HitCounter';
 
 /*
 `readFile` takes 1 argument:
@@ -21,14 +20,10 @@ writeFile(
 */
 
 async function Home() {
-  const json = readFile(DATABASE_PATH);
-  let { hits } = await JSON.parse(json);
-  hits++;
-  writeFile(DATABASE_PATH, JSON.stringify({ hits }));
   return (
     <main>
       <h1>Welcome!</h1>
-      <p>You are visitor number {hits}.</p>
+      <HitCounter />
     </main>
   );
 }
